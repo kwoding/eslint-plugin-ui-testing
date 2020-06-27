@@ -9,6 +9,7 @@ import noHardWait from './rules/no-hard-wait';
 import noImplicitWait from './rules/no-implicit-wait';
 import noLinkTextSelector from './rules/no-link-text-selector';
 import noTagNameSelector from './rules/no-tag-name-selector';
+import noWaitInTests from './rules/no-wait-in-tests';
 import noXpathPageLayoutSelector from './rules/no-xpath-page-layout-selector';
 import noXpathSelector from './rules/no-xpath-selector';
 
@@ -32,6 +33,7 @@ export = {
         'no-implicit-wait': noImplicitWait,
         'no-link-text-selector': noLinkTextSelector,
         'no-tag-name-selector': noTagNameSelector,
+        'no-wait-in-tests': noWaitInTests,
         'no-xpath-page-layout-selector': noXpathPageLayoutSelector,
         'no-xpath-selector': noXpathSelector,
     },
@@ -58,6 +60,7 @@ export = {
                 ...recommendedRules,
                 'ui-testing/no-browser-commands-in-tests': ['warn', 'playwright'],
                 'ui-testing/no-hard-wait': ['error', 'playwright'],
+                'ui-testing/no-wait-in-tests': ['warn', 'playwright'],
             },
         },
         puppeteer: {
@@ -66,6 +69,7 @@ export = {
                 ...recommendedRules,
                 'ui-testing/no-browser-commands-in-tests': ['warn', 'puppeteer'],
                 'ui-testing/no-hard-wait': ['error', 'puppeteer'],
+                'ui-testing/no-wait-in-tests': ['warn', 'puppeteer'],
             },
         },
         testcafe: {
@@ -74,6 +78,7 @@ export = {
                 ...recommendedRules,
                 'ui-testing/missing-assertion-in-test': ['error', { assertCommands: ['expect'] }],
                 'ui-testing/no-hard-wait': ['error', 'testcafe'],
+                'ui-testing/no-wait-in-tests': ['warn', 'testcafe'],
             },
         },
         webdriverio: {
@@ -87,6 +92,7 @@ export = {
                 'ui-testing/no-implicit-wait': ['error'],
                 'ui-testing/no-link-text-selector': ['error'],
                 'ui-testing/no-tag-name-selector': ['error'],
+                'ui-testing/no-wait-in-tests': ['warn', 'webdriverio'],
                 'ui-testing/no-xpath-page-layout-selector': ['error'],
                 'ui-testing/no-xpath-selector': ['warn'],
             },
