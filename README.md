@@ -48,7 +48,7 @@ Example:
 
 You can customize specific rules in the `.eslintrc` configuration file.
 
-```json
+```
 {
     "rules": {
         "ui-testing/no-disabled-tests": "error", // default = warn
