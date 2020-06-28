@@ -1,6 +1,6 @@
 import { ESLintUtils } from '@typescript-eslint/experimental-utils';
 import { parse } from 'path';
-import { AutomationTool, CalleePattern } from '../data/data';
+import { AutomationTool } from '../data/data';
 
 export const getRuleName = (): string => __filename.slice(__dirname.length + 1, -3);
 
@@ -10,26 +10,15 @@ export const createRule = ESLintUtils.RuleCreator((name) => {
     return `https://github.com/kwoding/eslint-plugin-ui-testing/tree/master/docs/rules/${ruleName}.md`;
 });
 
-export function getCalleePattern(commands: string[]): CalleePattern {
-    const [objectPropertyNames, callees] = commands.reduce(
-        (result, command) => {
-            result[command.includes('.') ? 0 : 1].push(command);
-            return result;
-        },
-        [[], []]
+export function isObjectPropertyNameInCommands(node: any, commands: string[]): boolean {
+    return (
+        commands.some(command => getCommandRegExp(command).test(`${node.callee.object.name}.${node.callee.property.name}`)) ||
+        commands.some(command => getCommandRegExp(command).test(`.${node.callee.property.name}`))
     );
+}
 
-    const objectNames = objectPropertyNames
-        .filter((command) => command.includes('.'))
-        .map((command) => command.split('.')[0])
-        .filter(Boolean)
-        .join('|');
-
-    return {
-        calleeNamePattern: callees.join('|'),
-        objectNamePattern: objectNames ? objectNames : '.+',
-        propertyNamePattern: objectPropertyNames.map((command) => command.split('.')[1]).join('|'),
-    };
+export function isCalleeNameInCommands(node: any, commands: string[]): boolean {
+    return commands.some(command => getCommandRegExp(command).test(`${node.callee.name}`))
 }
 
 export function getHardWaitCommands(automationTool: AutomationTool): string[] {
@@ -59,7 +48,7 @@ export function getWaitCommandsNotInTest(automationTool: AutomationTool): string
         case 'puppeteer':
             return ['.waitFor', '.waitFor(\\D+)'];
         case 'webdriverio':
-            return ['.pause', '.waitUntil', '.waitFor(\\D+)'];
+            return ['browser.pause', '.waitUntil', '.waitFor(\\D+)'];
     }
 }
 
@@ -139,7 +128,7 @@ export function getOpenUrlCommands(automationTool: AutomationTool): string[] {
     }
 }
 
-export function getBrowserCommands(automationTool: AutomationTool): string[] {
+export function getBrowserObjectNames(automationTool: AutomationTool): string[] {
     switch (automationTool) {
         // for cypress/testcafe it is common practice to use `cy` or `t` in tests
         case 'cypress':
@@ -151,4 +140,8 @@ export function getBrowserCommands(automationTool: AutomationTool): string[] {
         case 'webdriverio':
             return ['browser'];
     }
+}
+
+function getCommandRegExp(command: string) {
+    return new RegExp(`^${command.replace('.', '[.]')}$`);
 }

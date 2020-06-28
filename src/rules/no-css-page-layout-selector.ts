@@ -1,7 +1,11 @@
-import { TSESTree } from '@typescript-eslint/experimental-utils';
 import { AutomationTool, LOC_SOF, NO_AUTOMATION_TOOL_SET_MESSAGE } from '../data/data';
-import { createRule, getSelectorCommands, getRuleName, getCalleePattern } from '../utils/utils';
-import { RuleContext } from '@typescript-eslint/experimental-utils/dist/ts-eslint';
+import {
+    createRule,
+    getRuleName,
+    getSelectorCommands,
+    isCalleeNameInCommands,
+    isObjectPropertyNameInCommands,
+} from '../utils/utils';
 
 function isCssPageLayoutSelector(value: string) {
     const nonCssPattern = new RegExp(
@@ -10,17 +14,6 @@ function isCssPageLayoutSelector(value: string) {
     const cssPageLayoutPattern = new RegExp('(\\S+((\\s+[>]\\s+)|(\\s+))\\S+){2,}');
 
     return !nonCssPattern.test(value) && cssPageLayoutPattern.test(value);
-}
-
-function report(
-    context: Readonly<
-        RuleContext<'noCssPageLayoutSelector', [AutomationTool]>
-    >,
-    node: TSESTree.Literal
-) {
-    if (isCssPageLayoutSelector(`${node.value}`)) {
-        context.report({ node, messageId: `noCssPageLayoutSelector` });
-    }
 }
 
 export const RULE_NAME = getRuleName();
@@ -52,18 +45,28 @@ export default createRule({
             context.report({ loc: LOC_SOF, messageId: 'noAutomationToolSet' });
         }
 
-        const calleePattern = getCalleePattern(getSelectorCommands(automationApi) || []);
+        const selectorCommands = getSelectorCommands(automationApi) || [];
 
         return {
-            [`CallExpression[callee.object.name=/^(${calleePattern.objectNamePattern})$/][callee.property.name=/^(${calleePattern.propertyNamePattern})$/] Literal[value]`](
-                node: TSESTree.Literal
-            ) {
-                report(context, node);
+            [`CallExpression[callee.object.name][callee.property.name]`](node: any) {
+                const value = node.arguments.length ? node.arguments[0].value : '';
+
+                if (
+                    isObjectPropertyNameInCommands(node, selectorCommands) &&
+                    isCssPageLayoutSelector(value)
+                ) {
+                    context.report({ node, messageId: `noCssPageLayoutSelector` });
+                }
             },
-            [`CallExpression[callee.name=/^${calleePattern.calleeNamePattern}$/] Literal[value]`](
-                node: TSESTree.Literal
-            ) {
-                report(context, node);
+            [`CallExpression[callee.name]`](node: any) {
+                const value = node.arguments.length ? node.arguments[0].value : '';
+
+                if (
+                    isCalleeNameInCommands(node, selectorCommands) &&
+                    isCssPageLayoutSelector(value)
+                ) {
+                    context.report({ node, messageId: `noCssPageLayoutSelector` });
+                }
             },
         };
     },

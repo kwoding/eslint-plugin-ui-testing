@@ -1,5 +1,5 @@
 import { AutomationTool, LOC_SOF, TEST_BLOCKS_PATTERN } from '../data/data';
-import { createRule, getBrowserCommands, getRuleName } from '../utils/utils';
+import { createRule, getBrowserObjectNames, getRuleName } from '../utils/utils';
 
 export const RULE_NAME = getRuleName();
 
@@ -31,20 +31,20 @@ export default createRule({
             context.report({ loc: LOC_SOF, messageId: 'noAutomationToolSet' });
         }
 
-        const browserCommands = (getBrowserCommands(automationApi) || []).join('|');
+        const browserObjectNames = (getBrowserObjectNames(automationApi) || []).join('|');
 
         return {
-            [`CallExpression[callee.name=${TEST_BLOCKS_PATTERN}] Identifier[name=/^${browserCommands}$/]`](
+            [`CallExpression[callee.name=${TEST_BLOCKS_PATTERN}] CallExpression[callee.object.name=/^${browserObjectNames}$/]`](
                 node
             ) {
                 context.report({ node, messageId: 'noBrowserCommandInTests' });
             },
-            [`CallExpression[callee.object.name=${TEST_BLOCKS_PATTERN}] Identifier[name=/^${browserCommands}$/]`](
+            [`CallExpression[callee.object.name=${TEST_BLOCKS_PATTERN}] CallExpression[callee.object.name=/^${browserObjectNames}$/]`](
                 node
             ) {
                 context.report({ node, messageId: 'noBrowserCommandInTests' });
             },
-            [`CallExpression[callee.object.object.name=${TEST_BLOCKS_PATTERN}] Identifier[name=/^${browserCommands}$/]`](
+            [`CallExpression[callee.object.object.name=${TEST_BLOCKS_PATTERN}] CallExpression[callee.object.name=/^${browserObjectNames}$/]`](
                 node
             ) {
                 context.report({ node, messageId: 'noBrowserCommandInTests' });

@@ -1,5 +1,5 @@
 import { AutomationTool, LOC_SOF, NO_AUTOMATION_TOOL_SET_MESSAGE } from '../data/data';
-import { createRule, getHardWaitCommands, getRuleName, getCalleePattern } from '../utils/utils';
+import { createRule, getHardWaitCommands, getRuleName, isObjectPropertyNameInCommands } from '../utils/utils';
 
 export const RULE_NAME = getRuleName();
 
@@ -30,13 +30,18 @@ export default createRule({
             context.report({ loc: LOC_SOF, messageId: 'noAutomationToolSet' });
         }
 
-        const calleePattern = getCalleePattern(getHardWaitCommands(automationApi) || []);
+        const digitPattern = new RegExp('\\d+');
+        const hardWaitCommands = getHardWaitCommands(automationApi) || [];
 
         return {
-            [`CallExpression[callee.object.name=/^(${calleePattern.objectNamePattern})$/][callee.property.name=/^(${calleePattern.propertyNamePattern})$/] Literal[value!=/\\D+/]`](
-                node
+            [`CallExpression[callee.object.name][callee.property.name]`](
+                node: any
             ) {
-                context.report({ node, messageId: 'noHardWait' });
+                const value = node.arguments.length ? node.arguments[0].value : '';
+
+                if (isObjectPropertyNameInCommands(node, hardWaitCommands) && digitPattern.test(value)) {
+                    context.report({ node, messageId: 'noHardWait' });
+                }
             },
         };
     },
