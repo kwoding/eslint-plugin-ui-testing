@@ -1,5 +1,13 @@
 import { AutomationTool, LOC_SOF, TEST_BLOCKS_PATTERN } from '../data/data';
-import { createRule, getWaitCommandsNotInTest, getRuleName, getCalleePattern } from '../utils/utils';
+import { createRule, getRuleName, getWaitCommandsNotInTest, isObjectPropertyNameInCommands } from '../utils/utils';
+import { RuleContext } from '@typescript-eslint/experimental-utils/dist/ts-eslint';
+import { TSESTree } from '@typescript-eslint/experimental-utils';
+
+function report(context: RuleContext<"noWaitInTests" | "noAutomationToolSet", [AutomationTool]>, node: TSESTree.CallExpression, commands: string[]) {
+    if (isObjectPropertyNameInCommands(node, commands)) {
+        context.report({ node, messageId: 'noWaitInTests' });
+    }
+}
 
 export const RULE_NAME = getRuleName();
 
@@ -13,7 +21,8 @@ export default createRule({
         },
         messages: {
             noAutomationToolSet: `Please set the appropriate automation API used, choose one from: playwright, puppeteer, webdriverio`,
-            noWaitInTests: 'Avoid wait in tests, rather move these to page objects or an other abstraction layer',
+            noWaitInTests:
+                'Avoid wait in tests, rather move these to page objects or an other abstraction layer',
         },
         schema: [
             {
@@ -30,18 +39,18 @@ export default createRule({
             context.report({ loc: LOC_SOF, messageId: 'noAutomationToolSet' });
         }
 
-        const calleePattern = getCalleePattern(getWaitCommandsNotInTest(automationApi) || []);
-        const matcher = `CallExpression[callee.object.name=/^(${calleePattern.objectNamePattern})$/][callee.property.name=/^(${calleePattern.propertyNamePattern})$/]`;
+        const waitCommands = getWaitCommandsNotInTest(automationApi) || [];
+        const matcher = `CallExpression[callee.object.name][callee.property.name]`;
 
         return {
-            [`CallExpression[callee.name=${TEST_BLOCKS_PATTERN}] ${matcher}`](node) {
-                context.report({ node, messageId: 'noWaitInTests' });
+            [`CallExpression[callee.name=${TEST_BLOCKS_PATTERN}] ${matcher}`](node: any) {
+                report(context, node, waitCommands);
             },
             [`CallExpression[callee.object.name=${TEST_BLOCKS_PATTERN}] ${matcher}`](node) {
-                context.report({ node, messageId: 'noWaitInTests' });
+                report(context, node, waitCommands);
             },
             [`CallExpression[callee.object.object.name=${TEST_BLOCKS_PATTERN}] ${matcher}`](node) {
-                context.report({ node, messageId: 'noWaitInTests' });
+                report(context, node, waitCommands);
             },
         };
     },
