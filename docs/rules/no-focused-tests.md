@@ -1,5 +1,7 @@
 # Disallow focused tests
 
+![recommended-badge][]
+
 Ensure that there no focused tests. Having focused tests can lead to false so-called "green" builds.
 
 ## Rule Details
@@ -53,3 +55,5 @@ describe('test suite', () => {
     });
 });
 ```
+
+[recommended-badge]: https://img.shields.io/badge/recommended-brightgreen

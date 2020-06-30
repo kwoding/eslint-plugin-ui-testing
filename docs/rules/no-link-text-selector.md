@@ -1,5 +1,7 @@
 # Disallow link text selector
 
+![webdriverio-badge][]
+
 Link text selectors are not recommended. Use css selectors instead.
 
 ## Rule Details
@@ -19,3 +21,5 @@ $('.abc #def');
 $('.abc > #def');
 $('[data-test="some-identifier"]');
 ```
+
+[webdriverio-badge]: https://img.shields.io/badge/webdriverio-orange

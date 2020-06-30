@@ -1,5 +1,7 @@
 # Disallow assertions in hooks
 
+![recommended-badge][]
+
 Assertions should not be part of before/after hooks. The key of an assertion is to explicitly test something which should be obviously part of the test and not part of any hooks.
 
 ## Rule Details
@@ -48,3 +50,5 @@ The `assertCommands` array contains the assert function names to match on. This 
     ]
 }
 ```
+
+[recommended-badge]: https://img.shields.io/badge/recommended-brightgreen

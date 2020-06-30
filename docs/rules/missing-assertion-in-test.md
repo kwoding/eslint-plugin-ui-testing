@@ -1,5 +1,7 @@
 # Disallow tests without assertions
 
+![recommended-badge][]
+
 Ensure that there no tests without assertions. Tests without assertions do not explicitly test something.
 
 ## Rule Details
@@ -62,3 +64,5 @@ The `assertCommands` array contains the assert function names to match on. This 
     ]
 }
 ```
+
+[recommended-badge]: https://img.shields.io/badge/recommended-brightgreen

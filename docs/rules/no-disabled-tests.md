@@ -1,5 +1,7 @@
 # Disallow disabled tests
 
+![recommended-badge][]
+
 Ensure that there no disabled tests. Disabled tests could be forgotten to fix. Usually these tests are temporarily disabled, in order to fix them later.
 
 ## Rule Details
@@ -53,3 +55,5 @@ describe('test suite', () => {
     });
 });
 ```
+
+[recommended-badge]: https://img.shields.io/badge/recommended-brightgreen

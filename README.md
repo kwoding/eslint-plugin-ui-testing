@@ -70,18 +70,18 @@ You can customize specific rules in the `.eslintrc` configuration file.
 | [Disallow browser/page commands in tests](docs/rules/no-browser-commands-in-tests.md)      | `warn`  | ![playwright-badge][] ![puppeteer-badge][] ![webdriverio-badge][]                                        |
 | [Disallow css selector tied to page layout](docs/rules/no-css-page-layout-selector.md)     | `error` | ![cypress-badge][] ![playwright-badge][] ![puppeteer-badge][] ![testcafe-badge][] ![webdriverio-badge][] |
 | [Disallow disabled tests](docs/rules/no-disabled-tests.md)                                 | `warn`  | ![recommended-badge][]                                                                                   |
-| [Disallow wait in tests](docs/rules/no-wait-in-tests.md)                                   | `warn`  | ![playwright-badge][] ![puppeteer-badge][] ![testcafe-badge][] ![webdriverio-badge][]                    |
 | [Disallow focused tests](docs/rules/no-focused-tests.md)                                   | `warn`  | ![recommended-badge][]                                                                                   |
 | [Disallow hard wait](docs/rules/no-hard-wait.md)                                           | `error` | ![cypress-badge][] ![playwright-badge][] ![puppeteer-badge][] ![testcafe-badge][] ![webdriverio-badge][] |
 | [Disallow implicit wait](docs/rules/no-implicit-wait.md)                                   | `error` | ![webdriverio-badge][]                                                                                   |
 | [Disallow link text selector](docs/rules/no-link-text-selector.md)                         | `error` | ![webdriverio-badge][]                                                                                   |
 | [Disallow tag name selector](docs/rules/no-tag-name-selector.md)                           | `error` | ![webdriverio-badge][]                                                                                   |
+| [Disallow wait in tests](docs/rules/no-wait-in-tests.md)                                   | `warn`  | ![playwright-badge][] ![puppeteer-badge][] ![testcafe-badge][] ![webdriverio-badge][]                    |
 | [Disallow xpath selector tied to page layout](docs/rules/no-xpath-page-layout-selector.md) | `error` | ![webdriverio-badge][]                                                                                   |
 | [Disallow xpath selector](docs/rules/no-xpath-selector.md)                                 | `warn`  | ![webdriverio-badge][]                                                                                   |
 
 Note: All automation tool specific rulesets include the recommended ruleset.
 
-[recommended-badge]: https://img.shields.io/badge/recommended-green
+[recommended-badge]: https://img.shields.io/badge/recommended-brightgreen
 [cypress-badge]: https://img.shields.io/badge/cypress-black
 [playwright-badge]: https://img.shields.io/badge/playwright-blue
 [puppeteer-badge]: https://img.shields.io/badge/puppeteer-3eb489

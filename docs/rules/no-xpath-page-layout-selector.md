@@ -1,5 +1,7 @@
 # Disallow xpath selector tied to page layout
 
+![webdriverio-badge][]
+
 Xpath selectors should not be tied to page layout. Page layout can be changed frequently. Xpath locators which does not start with `//` (relative) or contain more than two `/` are considered to be tied to page layout.
 
 ## Rule Details
@@ -29,3 +31,5 @@ The supported automation tool for this rule is: `webdriverio`.
   "ui-testing/no-xpath-page-layout-selector": ["warn", "webdriverio"]
 }
 ```
+
+[webdriverio-badge]: https://img.shields.io/badge/webdriverio-orange
