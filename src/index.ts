@@ -59,6 +59,7 @@ export = {
             rules: {
                 ...recommendedRules,
                 'ui-testing/no-browser-commands-in-tests': ['warn', 'playwright'],
+                'ui-testing/no-css-page-layout-selector': ['error', 'playwright'],
                 'ui-testing/no-hard-wait': ['error', 'playwright'],
                 'ui-testing/no-wait-in-tests': ['warn', 'playwright'],
             },
@@ -68,6 +69,7 @@ export = {
             rules: {
                 ...recommendedRules,
                 'ui-testing/no-browser-commands-in-tests': ['warn', 'puppeteer'],
+                'ui-testing/no-css-page-layout-selector': ['error', 'puppeteer'],
                 'ui-testing/no-hard-wait': ['error', 'puppeteer'],
                 'ui-testing/no-wait-in-tests': ['warn', 'puppeteer'],
             },
@@ -77,6 +79,7 @@ export = {
             rules: {
                 ...recommendedRules,
                 'ui-testing/missing-assertion-in-test': ['error', { assertCommands: ['expect'] }],
+                'ui-testing/no-css-page-layout-selector': ['error', 'testcafe'],
                 'ui-testing/no-hard-wait': ['error', 'testcafe'],
                 'ui-testing/no-wait-in-tests': ['warn', 'testcafe'],
             },
