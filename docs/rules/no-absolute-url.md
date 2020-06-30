@@ -1,5 +1,7 @@
 # Disallow absolute url
 
+![cypress-badge][] ![webdriverio-badge][]
+
 Absolute urls should not be used in the open url command. Use a base url in the project config instead.
 
 ## Rule Details
@@ -27,3 +29,6 @@ The supported automation tools for this rule are: `cypress` and `webdriverio`.
   "ui-testing/no-absolute-url": ["warn", "webdriverio"]
 }
 ```
+
+[cypress-badge]: https://img.shields.io/badge/cypress-black
+[webdriverio-badge]: https://img.shields.io/badge/webdriverio-orange

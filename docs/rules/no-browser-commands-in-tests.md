@@ -1,5 +1,7 @@
 # Disallow browser/page commands in tests
 
+![playwright-badge][] ![puppeteer-badge][] ![webdriverio-badge][] 
+
 Browser/page commands should not be used inside tests directly including before/after hooks. Browser/page commands should be moved to page objects or to an other abstraction layer for better readibility and mainability of tests (usually less verbose).
 
 ## Rule Details
@@ -53,3 +55,7 @@ The supported automation tools for this rule are: `playwright`, `puppeteer` and 
   "ui-testing/no-browser-commands-in-tests": ["warn", "webdriverio"]
 }
 ```
+
+[playwright-badge]: https://img.shields.io/badge/playwright-blue
+[puppeteer-badge]: https://img.shields.io/badge/puppeteer-3eb489
+[webdriverio-badge]: https://img.shields.io/badge/webdriverio-orange
