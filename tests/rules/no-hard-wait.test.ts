@@ -25,7 +25,7 @@ ruleTester.run(RULE_NAME, rule, {
     { code: 'page.pause(1000)', options: ['playwright'] },
     { code: 'page.wait(1000);', options: ['playwright'] },
     { code: 'page.waitFor(".abc");', options: ['playwright'] },
-    { code: 'browser.pause();', options: ['webdriverio']},
+    { code: 'browser.pause();', options: ['webdriverio'] },
   ],
   invalid: [
     {

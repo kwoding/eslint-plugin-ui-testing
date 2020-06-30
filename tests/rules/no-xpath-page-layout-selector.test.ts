@@ -4,43 +4,43 @@ import { createRuleTester } from '../utils/rule-tester.util';
 const ruleTester = createRuleTester();
 
 ruleTester.run(RULE_NAME, rule, {
-    valid: [
-        "$('//submit/button');",
-        '$(\'//cancel/button[@id="element"]\');',
-        '$(\'//*[@id="element_id"]\');',
-    ],
-    invalid: [
+  valid: [
+    "$('//submit/button');",
+    '$(\'//cancel/button[@id="element"]\');',
+    '$(\'//*[@id="element_id"]\');',
+  ],
+  invalid: [
+    {
+      code: '$("/submit/button");',
+      errors: [
         {
-            code: '$("/submit/button");',
-            errors: [
-                {
-                    messageId: 'noXpathPageLayoutSelector',
-                },
-            ],
+          messageId: 'noXpathPageLayoutSelector',
         },
+      ],
+    },
+    {
+      code: '$("/search/submit/button");',
+      errors: [
         {
-            code: '$("/search/submit/button");',
-            errors: [
-                {
-                    messageId: 'noXpathPageLayoutSelector',
-                },
-            ],
+          messageId: 'noXpathPageLayoutSelector',
         },
+      ],
+    },
+    {
+      code: '$("//search/submit/button");',
+      errors: [
         {
-            code: '$("//search/submit/button");',
-            errors: [
-                {
-                    messageId: 'noXpathPageLayoutSelector',
-                },
-            ],
+          messageId: 'noXpathPageLayoutSelector',
         },
+      ],
+    },
+    {
+      code: '$("/confirmation/book/message[text()]");',
+      errors: [
         {
-            code: '$("/confirmation/book/message[text()]");',
-            errors: [
-                {
-                    messageId: 'noXpathPageLayoutSelector',
-                },
-            ],
+          messageId: 'noXpathPageLayoutSelector',
         },
-    ],
+      ],
+    },
+  ],
 });

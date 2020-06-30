@@ -32,14 +32,14 @@ ruleTester.run(RULE_NAME, rule, {
       ],
     },
     {
-        code: 'beforeEach(() => { expect(true).to.be.true; });',
-        options: [{ assertCommands: undefined }],
-        errors: [
-          {
-            messageId: 'noAssertionsInHooks',
-          },
-        ],
-      },
+      code: 'beforeEach(() => { expect(true).to.be.true; });',
+      options: [{ assertCommands: undefined }],
+      errors: [
+        {
+          messageId: 'noAssertionsInHooks',
+        },
+      ],
+    },
     {
       code:
         'beforeAll(() => { return expectAsync(Promise.resolve(true)).toBeResolvedTo(true); });',
