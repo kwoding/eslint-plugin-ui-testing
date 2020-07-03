@@ -33,8 +33,7 @@
     "postbuild": "cpy package.json ./dist && cpy README.md ./dist && cpy LICENSE ./dist",
     "lint": "eslint . --ext .js,.ts",
     "test": "jest --clearCache && jest",
-    "pack": "npm pack ./dist",
-    "publish": "npm publish ./dist"
+    "pack": "npm pack ./dist"
   },
   "dependencies": {
     "@typescript-eslint/experimental-utils": "^3.5.0"
