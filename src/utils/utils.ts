@@ -2,6 +2,10 @@ import { ESLintUtils } from '@typescript-eslint/experimental-utils';
 import { parse } from 'path';
 import { AutomationTool } from '../data/data';
 
+function getCommandRegExp(command: string) {
+  return new RegExp(`^${command.replace('.', '[.]')}$`);
+}
+
 export const getRuleName = (): string => __filename.slice(__dirname.length + 1, -3);
 
 export const createRule = ESLintUtils.RuleCreator((name) => {
@@ -9,10 +13,6 @@ export const createRule = ESLintUtils.RuleCreator((name) => {
 
   return `https://github.com/kwoding/eslint-plugin-ui-testing/tree/master/docs/rules/${ruleName}.md`;
 });
-
-function getCommandRegExp(command: string) {
-  return new RegExp(`^${command.replace('.', '[.]')}$`);
-}
 
 export function isObjectPropertyNameInCommands(node: any, commands: string[]): boolean {
   return (
