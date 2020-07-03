@@ -1,67 +1,67 @@
 {
-    "env": {
-        "commonjs": true,
-        "es6": true,
-        "node": true,
-        "jest/globals": true
+  "env": {
+    "commonjs": true,
+    "es6": true,
+    "node": true,
+    "jest/globals": true
+  },
+  "extends": [
+    "airbnb-base",
+    "plugin:jest/recommended",
+    "plugin:jest-formatting/recommended"
+  ],
+  "plugins": [
+    "@typescript-eslint",
+    "import",
+    "jest",
+    "jest-formatting"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.eslint.json"
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [
+        ".ts",
+        ".tsx"
+      ]
     },
-    "extends": [
-        "airbnb-base",
-        "plugin:jest/recommended",
-        "plugin:jest-formatting/recommended"
-    ],
-    "plugins": [
-        "@typescript-eslint",
-        "import",
-        "jest",
-        "jest-formatting"
-    ],
-    "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
-    },
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "project": "./tsconfig.eslint.json"
-    },
-    "settings": {
-        "import/parsers": {
-            "@typescript-eslint/parser": [
-                ".ts",
-                ".tsx"
-            ]
-        },
-        "import/resolver": {
-            "node": {
-                "extensions": [
-                    ".js",
-                    ".jsx",
-                    ".ts",
-                    ".tsx"
-                ]
-            },
-            "typescript": {
-                "directory": "."
-            }
-        }
-    },
-    "rules": {
-        "import/extensions": [
-            "error",
-            "ignorePackages",
-            {
-                "js": "never",
-                "jsx": "never",
-                "ts": "never",
-                "tsx": "never"
-            }
-        ],
-        "import/prefer-default-export": "off",
-        "@typescript-eslint/no-unused-vars": [
-            "error",
-            {
-                "args": "none"
-            }
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
         ]
+      },
+      "typescript": {
+        "directory": "."
+      }
     }
+  },
+  "rules": {
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "import/prefer-default-export": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "args": "none"
+      }
+    ]
+  }
 }
