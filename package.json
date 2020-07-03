@@ -32,7 +32,9 @@
     "build": "rimraf ./dist && npm run lint && tsc",
     "postbuild": "cpy package.json ./dist && cpy README.md ./dist && cpy LICENSE ./dist",
     "lint": "eslint . --ext .js,.ts",
-    "test": "jest --clearCache && jest"
+    "test": "jest --clearCache && jest",
+    "pack": "npm pack ./dist",
+    "publish": "npm publish ./dist"
   },
   "dependencies": {
     "@typescript-eslint/experimental-utils": "^3.5.0"
