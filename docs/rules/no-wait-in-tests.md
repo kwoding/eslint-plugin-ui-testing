@@ -66,5 +66,5 @@ The supported automation tools for this rule are: `playwright`, `puppeteer`, `te
 
 [playwright-badge]: https://img.shields.io/badge/playwright-blue
 [puppeteer-badge]: https://img.shields.io/badge/puppeteer-3eb489
-[testcafe-badge]: https://img.shields.io/badge/testcafe-lightblue
+[testcafe-badge]: https://img.shields.io/badge/testcafe-a4cada
 [webdriverio-badge]: https://img.shields.io/badge/webdriverio-orange
