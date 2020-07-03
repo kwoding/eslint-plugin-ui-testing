@@ -1,5 +1,7 @@
 # eslint-plugin-ui-testing
 
+[![Build Status](https://travis-ci.com/kwoding/eslint-plugin-ui-testing.svg?branch=master)](https://travis-ci.com/kwoding/eslint-plugin-ui-testing)
+
 ESLint plugin that helps following best practices when writing UI tests. It supports the following automation tools (in alphabetical order):
 
 -   Cypress
