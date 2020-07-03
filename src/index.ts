@@ -46,11 +46,10 @@ export = {
       plugins: ['ui-testing'],
       rules: {
         ...recommendedRules,
-        'ui-testing/missing-assertion-in-test': [
-          'error',
-          { assertCommands: ['should', 'expect', 'assert'] },
-        ],
+        'ui-testing/missing-assertion-in-test': ['error', { assertCommands: ['should', 'expect', 'assert'] }],
+        'ui-testing/no-assertions-in-hooks': ['error', { assertCommands: ['should', 'expect', 'assert'] }],
         'ui-testing/no-absolute-url': ['warn', 'cypress'],
+        'ui-testing/no-css-page-layout-selector': ['error', 'cypress'],
         'ui-testing/no-hard-wait': ['error', 'cypress'],
       },
     },
@@ -79,6 +78,7 @@ export = {
       rules: {
         ...recommendedRules,
         'ui-testing/missing-assertion-in-test': ['error', { assertCommands: ['expect'] }],
+        'ui-testing/no-assertions-in-hooks': ['error', { assertCommands: ['expect'] }],
         'ui-testing/no-css-page-layout-selector': ['error', 'testcafe'],
         'ui-testing/no-hard-wait': ['error', 'testcafe'],
         'ui-testing/no-wait-in-tests': ['warn', 'testcafe'],
