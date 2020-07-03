@@ -1,7 +1,7 @@
 {
   "name": "eslint-plugin-ui-testing",
   "version": "0.0.0",
-  "description": "ESLint rules for UI testing frameworks WebdriverIO, Cypress, TestCafe, Playwright, Puppeteer",
+  "description": "ESLint rules for UI testing tools WebdriverIO, Cypress, TestCafe, Playwright, Puppeteer",
   "keywords": [
     "eslint",
     "eslintplugin",
