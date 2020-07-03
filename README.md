@@ -85,5 +85,5 @@ Note: All automation tool specific rulesets include the recommended ruleset.
 [cypress-badge]: https://img.shields.io/badge/cypress-black
 [playwright-badge]: https://img.shields.io/badge/playwright-blue
 [puppeteer-badge]: https://img.shields.io/badge/puppeteer-3eb489
-[testcafe-badge]: https://img.shields.io/badge/testcafe-lightblue
+[testcafe-badge]: https://img.shields.io/badge/testcafe-a4cada
 [webdriverio-badge]: https://img.shields.io/badge/webdriverio-orange
