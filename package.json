@@ -5,7 +5,17 @@
   "keywords": [
     "eslint",
     "eslintplugin",
-    "eslint-plugin"
+    "eslint-plugin",
+    "testing",
+    "test",
+    "ui-testing",
+    "ui",
+    "automation",
+    "cypress",
+    "playwright",
+    "puppeteer",
+    "testcafe",
+    "webdriverio"
   ],
   "author": "Kwo Ding",
   "license": "MIT",
