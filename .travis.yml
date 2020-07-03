@@ -3,21 +3,13 @@ language: node_js
 env:
   global:
     - FORCE_COLOR=true
-  matrix:
-    - ESLINT=5
-    - ESLINT=6
 
 node_js:
-  - 10.12
   - 12
-  - 14
-
-before_script:
-  - npm ci
 
 jobs:
   include:
-    - stage: lint
-      script: npm run lint
     - stage: test
       script: npm run test
+    - stage: build
+      script: npm run build
