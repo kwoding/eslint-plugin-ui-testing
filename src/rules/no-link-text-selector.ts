@@ -21,7 +21,7 @@ export default createRule({
   create(context) {
     return {
       'CallExpression[callee.name=/^[$]$/] Literal[value]': function rule(node: TSESTree.Literal) {
-        const linkTextPattern = new RegExp('^(=)|(\\*=)');
+        const linkTextPattern = new RegExp('^((=)|(\\*=))');
 
         if (linkTextPattern.test(`${node.value}`)) {
           context.report({ node, messageId: 'noLinkTextSelector' });

@@ -8,6 +8,7 @@ ruleTester.run(RULE_NAME, rule, {
     '$(\'["data-test"="test"]\');',
     '$(\'["data-test"="test"] .abc\');',
     '$(\'.some-element\');',
+    '$(\'[class*="some_class"]\')',
   ],
   invalid: [
     {
