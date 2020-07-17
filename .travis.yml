@@ -10,6 +10,6 @@ node_js:
 jobs:
   include:
     - stage: test
-      script: npm run test
+      script: npm run test -- --coverage
     - stage: build
       script: npm run build
