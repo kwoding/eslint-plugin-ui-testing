@@ -8,7 +8,7 @@ ruleTester.run(RULE_NAME, rule, {
     "$('//submit/button');",
     '$(\'//cancel/button[@id="element"]\');',
     '$(\'//*[@id="element_id"]\');',
-    '$(\'//*[contains(@Class, "someClass")])[2]\')',
+    '$(\'(//*[contains(@Class, "someClass")])[2]\')',
   ],
   invalid: [
     {

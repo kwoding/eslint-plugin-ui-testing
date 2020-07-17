@@ -22,7 +22,7 @@ export default createRule({
     return {
       'CallExpression[callee.name=/^[$]$/]': function rule(node: TSESTree.Literal) {
         const xpathPattern = new RegExp('^([/]|[(]|(../)|(./)|(\\*/))');
-        const recommendedXpathPattern = new RegExp('^//[^/]*/?[^/]*$');
+        const recommendedXpathPattern = new RegExp('^[(]?//[^/]*/?[^/]*$');
         const value = getArgumentValue(node);
 
         if (xpathPattern.test(value) && !recommendedXpathPattern.test(value)) {
