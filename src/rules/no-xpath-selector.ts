@@ -1,5 +1,5 @@
 import { TSESTree } from '@typescript-eslint/experimental-utils';
-import { createRule, getRuleName } from '../utils/utils';
+import { createRule, getRuleName, getArgumentValue } from '../utils/utils';
 
 export const RULE_NAME = getRuleName();
 
@@ -20,10 +20,10 @@ export default createRule({
   defaultOptions: [],
   create(context) {
     return {
-      'CallExpression[callee.name=/^[$]$/] Literal[value]': function rule(node: TSESTree.Literal) {
+      'CallExpression[callee.name=/^[$]$/]': function rule(node: TSESTree.Literal) {
         const xpathPattern = new RegExp('^([/]|[(]|(../)|(./)|(\\*/))');
 
-        if (xpathPattern.test(`${node.value}`)) {
+        if (xpathPattern.test(getArgumentValue(node))) {
           context.report({
             node,
             messageId: 'noXpathSelector',

@@ -39,6 +39,15 @@ ruleTester.run(RULE_NAME, rule, {
       ],
     },
     {
+      code: '$(`.abc #def > ["data-test"="test"]`);',
+      options: ['webdriverio'],
+      errors: [
+        {
+          messageId: 'noCssPageLayoutSelector',
+        },
+      ],
+    },
+    {
       code: 'cy.get(\'.abc #def > ["data-test"="test"]\');',
       options: ['cypress'],
       errors: [

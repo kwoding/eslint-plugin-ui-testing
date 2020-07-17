@@ -27,6 +27,15 @@ ruleTester.run(RULE_NAME, rule, {
         },
       ],
     },
+
+    {
+      code: '$(`/search/submit/button`);',
+      errors: [
+        {
+          messageId: 'noXpathPageLayoutSelector',
+        },
+      ],
+    },
     {
       code: '$("//search/submit/button");',
       errors: [
