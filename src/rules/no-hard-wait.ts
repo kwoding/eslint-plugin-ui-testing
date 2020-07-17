@@ -33,7 +33,7 @@ export default createRule({
     }
 
     const digitPattern = new RegExp('\\d+');
-    const hardWaitCommands = getHardWaitCommands(automationApi) || [];
+    const hardWaitCommands = getHardWaitCommands(automationApi);
 
     return {
       'CallExpression[callee.object.name][callee.property.name]': function rule(

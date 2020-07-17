@@ -14,6 +14,10 @@ export const createRule = ESLintUtils.RuleCreator((name) => {
   return `https://github.com/kwoding/eslint-plugin-ui-testing/tree/master/docs/rules/${ruleName}.md`;
 });
 
+export function getArgumentValue(node: any) {
+  return node.arguments.length ? node.arguments[0].value : '';
+}
+
 export function isObjectPropertyNameInCommands(node: any, commands: string[]): boolean {
   return (
     commands.some((command) => getCommandRegExp(command).test(

@@ -31,7 +31,7 @@ export default createRule({
       context.report({ loc: LOC_SOF, messageId: 'noAutomationToolSet' });
     }
 
-    const browserObjectNames = (getBrowserObjectNames(automationApi) || []).join('|');
+    const browserObjectNames = (getBrowserObjectNames(automationApi)).join('|');
 
     return {
       [`CallExpression[callee.name=${TEST_BLOCKS_PATTERN}] CallExpression[callee.object.name=/^${browserObjectNames}$/]`](
