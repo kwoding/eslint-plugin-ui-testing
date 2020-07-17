@@ -1,6 +1,6 @@
 import { AutomationTool, LOC_SOF, NO_AUTOMATION_TOOL_SET_MESSAGE } from '../data/data';
 import {
-  createRule, getHardWaitCommands, getRuleName, isObjectPropertyNameInCommands,
+  createRule, getHardWaitCommands, getRuleName, isObjectPropertyNameInCommands, getArgumentValue,
 } from '../utils/utils';
 
 export const RULE_NAME = getRuleName();
@@ -39,9 +39,8 @@ export default createRule({
       'CallExpression[callee.object.name][callee.property.name]': function rule(
         node: any,
       ) {
-        const value = node.arguments.length ? node.arguments[0].value : '';
-
-        if (isObjectPropertyNameInCommands(node, hardWaitCommands) && digitPattern.test(value)) {
+        if (isObjectPropertyNameInCommands(node, hardWaitCommands)
+        && digitPattern.test(getArgumentValue(node))) {
           context.report({ node, messageId: 'noHardWait' });
         }
       },

@@ -15,6 +15,10 @@ export const createRule = ESLintUtils.RuleCreator((name) => {
 });
 
 export function getArgumentValue(node: any) {
+  if (node.arguments.length && 'quasis' in node.arguments[0]) {
+    return node.arguments[0].quasis.map((x) => x.value.cooked).join('');
+  }
+
   return node.arguments.length ? node.arguments[0].value : '';
 }
 

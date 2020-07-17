@@ -1,6 +1,6 @@
 import { LOC_SOF, AutomationTool } from '../data/data';
 import {
-  createRule, getOpenUrlCommands, getRuleName, isObjectPropertyNameInCommands,
+  createRule, getOpenUrlCommands, getRuleName, isObjectPropertyNameInCommands, getArgumentValue,
 } from '../utils/utils';
 
 export const RULE_NAME = getRuleName();
@@ -39,7 +39,7 @@ export default createRule({
         node: any,
       ) {
         const absoluteUrlPattern = new RegExp('^(?:[a-z]+:)?//');
-        const value = node.arguments.length ? `${node.arguments[0].value}`.toLowerCase() : '';
+        const value = `${getArgumentValue(node)}`.toLowerCase();
 
         if (
           isObjectPropertyNameInCommands(node, openUrlCommands)

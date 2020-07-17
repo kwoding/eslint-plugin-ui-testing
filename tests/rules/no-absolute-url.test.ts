@@ -39,6 +39,15 @@ ruleTester.run(RULE_NAME, rule, {
       ],
     },
     {
+      code: 'browser.url(`https://github.com`);',
+      options: ['webdriverio'],
+      errors: [
+        {
+          messageId: 'noAbsoluteUrl',
+        },
+      ],
+    },
+    {
       code: 'page.goto("HTTP://github.com");',
       options: ['puppeteer'],
       errors: [
