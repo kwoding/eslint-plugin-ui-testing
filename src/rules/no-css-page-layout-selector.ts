@@ -5,6 +5,7 @@ import {
   getSelectorCommands,
   isCalleeNameInCommands,
   isObjectPropertyNameInCommands,
+  getArgumentValue,
 } from '../utils/utils';
 
 function isCssPageLayoutSelector(value: string) {
@@ -45,25 +46,21 @@ export default createRule({
       context.report({ loc: LOC_SOF, messageId: 'noAutomationToolSet' });
     }
 
-    const selectorCommands = getSelectorCommands(automationApi) || [];
+    const selectorCommands = getSelectorCommands(automationApi);
 
     return {
       'CallExpression[callee.object.name][callee.property.name]': function rule(node: any) {
-        const value = node.arguments.length ? node.arguments[0].value : '';
-
         if (
           isObjectPropertyNameInCommands(node, selectorCommands)
-                    && isCssPageLayoutSelector(value)
+                    && isCssPageLayoutSelector(getArgumentValue(node))
         ) {
           context.report({ node, messageId: 'noCssPageLayoutSelector' });
         }
       },
       'CallExpression[callee.name]': function rule(node: any) {
-        const value = node.arguments.length ? node.arguments[0].value : '';
-
         if (
           isCalleeNameInCommands(node, selectorCommands)
-                    && isCssPageLayoutSelector(value)
+                    && isCssPageLayoutSelector(getArgumentValue(node))
         ) {
           context.report({ node, messageId: 'noCssPageLayoutSelector' });
         }

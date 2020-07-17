@@ -32,7 +32,7 @@ export default createRule({
       context.report({ loc: LOC_SOF, messageId: 'noAutomationToolSet' });
     }
 
-    const openUrlCommands = getOpenUrlCommands(automationApi) || [];
+    const openUrlCommands = getOpenUrlCommands(automationApi);
 
     return {
       'CallExpression[callee.object.name][callee.property.name]': function rule(

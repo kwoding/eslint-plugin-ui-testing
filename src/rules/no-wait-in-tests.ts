@@ -41,7 +41,7 @@ export default createRule({
       context.report({ loc: LOC_SOF, messageId: 'noAutomationToolSet' });
     }
 
-    const waitCommands = getWaitCommandsNotInTest(automationApi) || [];
+    const waitCommands = getWaitCommandsNotInTest(automationApi);
     const matcher = 'CallExpression[callee.object.name][callee.property.name]';
 
     return {
