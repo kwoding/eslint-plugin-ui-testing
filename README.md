@@ -65,21 +65,21 @@ You can customize specific rules in the `.eslintrc` configuration file.
 ## Overview rules
 
 | Rule                                                                                       | Default | Ruleset                                                                                                  |
-| ------------------------------------------------------------------------------------------ | ------- | -------------------------------------------------------------------------------------------------------- |
-| [Disallow tests without assertions](docs/rules/missing-assertion-in-test.md)               | `error` | ![recommended-badge][]                                                                                   |
-| [Disallow absolute url](docs/rules/no-absolute-url.md)                                     | `warn`  | ![cypress-badge][] ![webdriverio-badge][]                                                                |
-| [Disallow assertions in hooks](docs/rules/no-assertions-in-hooks.md)                       | `error` | ![recommended-badge][]                                                                                   |
-| [Disallow browser/page commands in tests](docs/rules/no-browser-commands-in-tests.md)      | `warn`  | ![playwright-badge][] ![puppeteer-badge][] ![webdriverio-badge][]                                        |
-| [Disallow css selector tied to page layout](docs/rules/no-css-page-layout-selector.md)     | `error` | ![cypress-badge][] ![playwright-badge][] ![puppeteer-badge][] ![testcafe-badge][] ![webdriverio-badge][] |
-| [Disallow disabled tests](docs/rules/no-disabled-tests.md)                                 | `warn`  | ![recommended-badge][]                                                                                   |
-| [Disallow focused tests](docs/rules/no-focused-tests.md)                                   | `warn`  | ![recommended-badge][]                                                                                   |
-| [Disallow hard wait](docs/rules/no-hard-wait.md)                                           | `error` | ![cypress-badge][] ![playwright-badge][] ![puppeteer-badge][] ![testcafe-badge][] ![webdriverio-badge][] |
-| [Disallow implicit wait](docs/rules/no-implicit-wait.md)                                   | `error` | ![webdriverio-badge][]                                                                                   |
-| [Disallow link text selector](docs/rules/no-link-text-selector.md)                         | `error` | ![webdriverio-badge][]                                                                                   |
-| [Disallow tag name selector](docs/rules/no-tag-name-selector.md)                           | `error` | ![webdriverio-badge][]                                                                                   |
-| [Disallow wait in tests](docs/rules/no-wait-in-tests.md)                                   | `warn`  | ![playwright-badge][] ![puppeteer-badge][] ![testcafe-badge][] ![webdriverio-badge][]                    |
-| [Disallow xpath selector tied to page layout](docs/rules/no-xpath-page-layout-selector.md) | `error` | ![webdriverio-badge][]                                                                                   |
-| [Disallow xpath selector](docs/rules/no-xpath-selector.md)                                 | `warn`  | ![webdriverio-badge][]                                                                                   |
+| ---------------------------------------------------------------------------- | ------- | -------------------------------------------------------------------------------------------------------- |
+| [missing-assertion-in-test](docs/rules/missing-assertion-in-test.md)         | `error` | ![recommended-badge][]                                                                                   |
+| [no-absolute-url](docs/rules/no-absolute-url.md)                             | `warn`  | ![cypress-badge][] ![webdriverio-badge][]                                                                |
+| [no-assertions-in-hooks](docs/rules/no-assertions-in-hooks.md)               | `error` | ![recommended-badge][]                                                                                   |
+| [no-browser-commands-in-tests](docs/rules/no-browser-commands-in-tests.md)   | `warn`  | ![playwright-badge][] ![puppeteer-badge][] ![webdriverio-badge][]                                        |
+| [no-css-page-layout-selector](docs/rules/no-css-page-layout-selector.md)     | `error` | ![cypress-badge][] ![playwright-badge][] ![puppeteer-badge][] ![testcafe-badge][] ![webdriverio-badge][] |
+| [no-disabled-tests](docs/rules/no-disabled-tests.md)                         | `warn`  | ![recommended-badge][]                                                                                   |
+| [no-focused-tests](docs/rules/no-focused-tests.md)                           | `warn`  | ![recommended-badge][]                                                                                   |
+| [no-hard-wait](docs/rules/no-hard-wait.md)                                   | `error` | ![cypress-badge][] ![playwright-badge][] ![puppeteer-badge][] ![testcafe-badge][] ![webdriverio-badge][] |
+| [no-implicit-wait](docs/rules/no-implicit-wait.md)                           | `error` | ![webdriverio-badge][]                                                                                   |
+| [no-link-text-selector](docs/rules/no-link-text-selector.md)                 | `error` | ![webdriverio-badge][]                                                                                   |
+| [no-tag-name-selector](docs/rules/no-tag-name-selector.md)                   | `error` | ![webdriverio-badge][]                                                                                   |
+| [no-wait-in-tests](docs/rules/no-wait-in-tests.md)                           | `warn`  | ![playwright-badge][] ![puppeteer-badge][] ![testcafe-badge][] ![webdriverio-badge][]                    |
+| [no-xpath-page-layout-selector](docs/rules/no-xpath-page-layout-selector.md) | `error` | ![webdriverio-badge][]                                                                                   |
+| [no-xpath-selector](docs/rules/no-xpath-selector.md)                         | `warn`  | ![webdriverio-badge][]                                                                                   |
 
 Note: All automation tool specific rulesets include the recommended ruleset.
 
