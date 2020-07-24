@@ -60,7 +60,7 @@ The supported automation tools for this rule are: `playwright`, `puppeteer`, `te
 
 ```json
 {
-    "ui-testing/no-hard-wait": ["error", "webdriverio"]
+    "ui-testing/no-wait-in-tests": ["error", "webdriverio"]
 }
 ```
 
