@@ -6,8 +6,6 @@ function getCommandRegExp(command: string) {
   return new RegExp(`^${command.replace('.', '[.]')}$`);
 }
 
-export const getRuleName = (): string => __filename.slice(__dirname.length + 1, -3);
-
 export const createRule = ESLintUtils.RuleCreator((name) => {
   const ruleName = parse(name).name;
 

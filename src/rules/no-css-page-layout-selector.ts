@@ -1,7 +1,6 @@
 import { AutomationTool, LOC_SOF, NO_AUTOMATION_TOOL_SET_MESSAGE } from '../data/data';
 import {
   createRule,
-  getRuleName,
   getSelectorCommands,
   isCalleeNameInCommands,
   isObjectPropertyNameInCommands,
@@ -17,7 +16,7 @@ function isCssPageLayoutSelector(value: string) {
   return !nonCssPattern.test(value) && cssPageLayoutPattern.test(value);
 }
 
-export const RULE_NAME = getRuleName();
+export const RULE_NAME = __filename.slice(__dirname.length + 1, -3);
 
 export default createRule({
   name: RULE_NAME,

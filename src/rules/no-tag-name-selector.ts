@@ -1,7 +1,7 @@
 import { TSESTree } from '@typescript-eslint/experimental-utils';
-import { createRule, getRuleName } from '../utils/utils';
+import { createRule } from '../utils/utils';
 
-export const RULE_NAME = getRuleName();
+export const RULE_NAME = __filename.slice(__dirname.length + 1, -3);
 
 export default createRule({
   name: RULE_NAME,

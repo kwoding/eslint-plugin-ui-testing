@@ -2,7 +2,7 @@ import { RuleContext } from '@typescript-eslint/experimental-utils/dist/ts-eslin
 import { TSESTree } from '@typescript-eslint/experimental-utils';
 import { AutomationTool, LOC_SOF, TEST_BLOCKS_PATTERN } from '../data/data';
 import {
-  createRule, getRuleName, getWaitCommandsNotInTest, isObjectPropertyNameInCommands,
+  createRule, getWaitCommandsNotInTest, isObjectPropertyNameInCommands,
 } from '../utils/utils';
 
 function report(context: RuleContext<'noWaitInTests' | 'noAutomationToolSet', [AutomationTool]>, node: TSESTree.CallExpression, commands: string[]) {
@@ -11,7 +11,7 @@ function report(context: RuleContext<'noWaitInTests' | 'noAutomationToolSet', [A
   }
 }
 
-export const RULE_NAME = getRuleName();
+export const RULE_NAME = __filename.slice(__dirname.length + 1, -3);
 
 export default createRule({
   name: RULE_NAME,

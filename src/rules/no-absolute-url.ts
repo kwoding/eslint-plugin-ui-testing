@@ -1,9 +1,9 @@
 import { LOC_SOF, AutomationTool } from '../data/data';
 import {
-  createRule, getOpenUrlCommands, getRuleName, isObjectPropertyNameInCommands, getArgumentValue,
+  createRule, getOpenUrlCommands, isObjectPropertyNameInCommands, getArgumentValue,
 } from '../utils/utils';
 
-export const RULE_NAME = getRuleName();
+export const RULE_NAME = __filename.slice(__dirname.length + 1, -3);
 
 export default createRule({
   name: RULE_NAME,
