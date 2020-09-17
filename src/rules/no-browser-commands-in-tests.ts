@@ -1,7 +1,7 @@
 import { AutomationTool, LOC_SOF, TEST_BLOCKS_PATTERN } from '../data/data';
-import { createRule, getBrowserObjectNames, getRuleName } from '../utils/utils';
+import { createRule, getBrowserObjectNames } from '../utils/utils';
 
-export const RULE_NAME = getRuleName();
+export const RULE_NAME = __filename.slice(__dirname.length + 1, -3);
 
 export default createRule({
   name: RULE_NAME,

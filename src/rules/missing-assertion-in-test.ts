@@ -1,6 +1,6 @@
 import { TSESTree } from '@typescript-eslint/experimental-utils';
 import { RuleContext } from '@typescript-eslint/experimental-utils/dist/ts-eslint';
-import { createRule, getRuleName } from '../utils/utils';
+import { createRule } from '../utils/utils';
 
 let actualCommands: string[] = [];
 
@@ -15,7 +15,7 @@ function report(
   }
 }
 
-export const RULE_NAME = getRuleName();
+export const RULE_NAME = __filename.slice(__dirname.length + 1, -3);
 
 export default createRule({
   name: RULE_NAME,

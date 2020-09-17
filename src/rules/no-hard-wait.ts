@@ -1,9 +1,9 @@
 import { AutomationTool, LOC_SOF, NO_AUTOMATION_TOOL_SET_MESSAGE } from '../data/data';
 import {
-  createRule, getHardWaitCommands, getRuleName, isObjectPropertyNameInCommands, getArgumentValue,
+  createRule, getHardWaitCommands, isObjectPropertyNameInCommands, getArgumentValue,
 } from '../utils/utils';
 
-export const RULE_NAME = getRuleName();
+export const RULE_NAME = __filename.slice(__dirname.length + 1, -3);
 
 export default createRule({
   name: RULE_NAME,
