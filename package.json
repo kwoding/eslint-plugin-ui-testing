@@ -35,6 +35,9 @@
     "test": "jest --clearCache && jest",
     "pack": "npm pack ./dist"
   },
+  "peerDependencies": {
+    "eslint": ">= 7"
+  },
   "dependencies": {
     "@typescript-eslint/experimental-utils": "^4.1.1"
   },
