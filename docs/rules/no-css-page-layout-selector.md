@@ -33,7 +33,7 @@ The supported automation tools for this rule are: `cypress`, `playwright`, `pupp
 
 ```json
 {
-  "ui-testing/no-hard-wait": ["error", "webdriverio"]
+  "ui-testing/no-css-page-layout-selector": ["warn", "webdriverio"]
 }
 ```
 

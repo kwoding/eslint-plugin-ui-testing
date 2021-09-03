@@ -42,7 +42,7 @@ The `assertCommands` array contains the assert function names to match on. This 
 
 ```json
 {
-    "ui-testing/missing-assertion-in-test": [
+    "ui-testing/no-assertions-in-hooks": [
         "error",
         {
             "assertCommands": ["expect"]
