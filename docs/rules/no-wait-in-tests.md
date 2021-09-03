@@ -9,30 +9,6 @@ Ensure that there no waits in tests directly including before/after hooks. Wait 
 Examples of **incorrect** code for this rule:
 
 ```js
-someMethod() {
-    // options: 'playwright'
-    page.waitForSelector('#id');
- }
-
-someMethod() {
-    // options: 'puppeteer'
-    page.waitFor('.abc');
- }
-
-someMethod() {
-    // options: 'testcafe'
-    t.wait(200);
- }
-
-someMethod() {
-    // options: 'webdriverio'
-    element.waitForDisplayed();
- }
-```
-
-Examples of **correct** code for this rule:
-
-```js
 it(() => {
     page.waitFor('.abc'); // options: 'puppeteer'
 });
@@ -52,6 +28,30 @@ it(() => {
             { timeout: 5000, timeoutMsg: 'expected text to be different after 5s' };
     });
 });
+```
+
+Examples of **correct** code for this rule:
+
+```js
+someMethod() {
+    // options: 'playwright'
+    page.waitForSelector('#id');
+ }
+
+someMethod() {
+    // options: 'puppeteer'
+    page.waitFor('.abc');
+ }
+
+someMethod() {
+    // options: 'testcafe'
+    t.wait(200);
+ }
+
+someMethod() {
+    // options: 'webdriverio'
+    element.waitForDisplayed();
+ }
 ```
 
 ## Options
