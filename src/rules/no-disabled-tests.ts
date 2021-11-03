@@ -6,7 +6,6 @@ export default createRule({
   name: RULE_NAME,
   meta: {
     docs: {
-      category: 'Best Practices',
       description: 'Disallow disabled tests',
       recommended: 'warn',
     },
