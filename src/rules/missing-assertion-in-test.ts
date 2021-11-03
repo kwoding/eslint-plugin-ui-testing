@@ -5,7 +5,7 @@ import { createRule } from '../utils/utils';
 let actualCommands: string[] = [];
 
 function report(
-  context: Readonly<RuleContext<'missingAssertionInTest', [{ assertCommands: string[] }]>>,
+  context: Readonly<RuleContext<'missingAssertionInTest', { assertCommands: string[] }[]>>,
   node: never,
 ) {
   if (!actualCommands.length) {
@@ -21,7 +21,6 @@ export default createRule({
   name: RULE_NAME,
   meta: {
     docs: {
-      category: 'Best Practices',
       description: 'Disallow tests without assertions',
       recommended: 'error',
     },

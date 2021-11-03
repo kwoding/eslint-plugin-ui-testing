@@ -5,7 +5,7 @@ import {
   createRule, getWaitCommandsNotInTest, isObjectPropertyNameInCommands,
 } from '../utils/utils';
 
-function report(context: RuleContext<'noWaitInTests' | 'noAutomationToolSet', [AutomationTool]>, node: TSESTree.CallExpression, commands: string[]) {
+function report(context: RuleContext<'noWaitInTests' | 'noAutomationToolSet', AutomationTool[]>, node: TSESTree.CallExpression, commands: string[]) {
   if (isObjectPropertyNameInCommands(node, commands)) {
     context.report({ node, messageId: 'noWaitInTests' });
   }
@@ -17,7 +17,6 @@ export default createRule({
   name: RULE_NAME,
   meta: {
     docs: {
-      category: 'Best Practices',
       description: 'Disallow wait in tests',
       recommended: 'error',
     },
@@ -36,7 +35,7 @@ export default createRule({
     type: 'problem',
   },
   defaultOptions: [null],
-  create(context, [automationApi]: [AutomationTool]) {
+  create(context, [automationApi]: AutomationTool[]) {
     if (!automationApi) {
       context.report({ loc: LOC_SOF, messageId: 'noAutomationToolSet' });
     }

@@ -7,7 +7,6 @@ export default createRule({
   name: RULE_NAME,
   meta: {
     docs: {
-      category: 'Best Practices',
       description: 'Disallow browser/page commands in tests',
       recommended: 'warn',
     },

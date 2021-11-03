@@ -7,7 +7,6 @@ export default createRule({
   name: RULE_NAME,
   meta: {
     docs: {
-      category: 'Best Practices',
       description: 'Disallow xpath selector tied to page layout',
       recommended: 'error',
     },
