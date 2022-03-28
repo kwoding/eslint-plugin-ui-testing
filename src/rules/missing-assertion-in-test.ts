@@ -47,20 +47,21 @@ export default createRule({
     [{ assertCommands = ['expect', 'expectAsync', 'assert'] }]: [{ assertCommands: string[] }],
   ) {
     const testBlockPattern = '/(it|test)$/';
+    const testPropertyPattern = '/^(only|concurrent|skip)$/';
     const commands = assertCommands.join('|');
 
     return {
-      [`CallExpression[callee.name=${testBlockPattern}] Identifier[name=/${commands}/]`](
+      [`CallExpression[callee.name=${testBlockPattern}] Identifier[name=/^${commands}$/]`](
         node: TSESTree.Identifier,
       ) {
         actualCommands.push(node.name);
       },
-      [`CallExpression[callee.object.name=${testBlockPattern}] Identifier[name=/${commands}/]`](
+      [`CallExpression[callee.object.name=${testBlockPattern}][callee.property.name=${testPropertyPattern}] Identifier[name=/^${commands}$/]`](
         node: TSESTree.Identifier,
       ) {
         actualCommands.push(node.name);
       },
-      [`CallExpression[callee.object.object.name=${testBlockPattern}] Identifier[name=/${commands}/]`](
+      [`CallExpression[callee.object.object.name=${testBlockPattern}][callee.property.name=${testPropertyPattern}] Identifier[name=/^${commands}$/]`](
         node: TSESTree.Identifier,
       ) {
         actualCommands.push(node.name);
@@ -68,10 +69,10 @@ export default createRule({
       [`CallExpression[callee.name=${testBlockPattern}]:exit`](node) {
         report(context, node);
       },
-      [`CallExpression[callee.object.name=${testBlockPattern}]:exit`](node) {
+      [`CallExpression[callee.object.name=${testBlockPattern}][callee.property.name=${testPropertyPattern}]:exit`](node) {
         report(context, node);
       },
-      [`CallExpression[callee.object.object.name=${testBlockPattern}]:exit`](node) {
+      [`CallExpression[callee.object.object.name=${testBlockPattern}][callee.property.name=${testPropertyPattern}]:exit`](node) {
         report(context, node);
       },
     };

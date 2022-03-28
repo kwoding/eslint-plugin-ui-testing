@@ -7,6 +7,7 @@ ruleTester.run(RULE_NAME, rule, {
   valid: [
     'describe(() => {});',
     'it(() => { expectAsync(true).to.equal(true); });',
+    'test.concurrent(() => { assert(true).to.equal(true); });',
     'describe(() => { test(() => { expect(true).to.equal(true); }); });',
     'test.concurrent.only(() => { expect(true).to.equal(true); });',
     'it.only(() => { assert(true).to.equal(true); });',
@@ -14,6 +15,7 @@ ruleTester.run(RULE_NAME, rule, {
     'fdescribe(() => {expect(true).to.equal(true); });',
     'describe(() => { fit(() => { assert(true).to.equal(true); }); });',
     'ftest(() => { expectAsync(true).to.equal(true); });',
+    'test.describe(\'test suite\', () => { test.beforeEach(async ({ page }) => { await page.goto("/"); }); test(\'some test\', async ({ page }) => { await expect(page).toHaveURL("https://"); }); });',
     {
       code: 'it("", () => { testAssert(); })',
       options: [{ assertCommands: ['testAssert'] }],
