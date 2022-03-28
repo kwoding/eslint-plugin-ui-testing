@@ -33,7 +33,8 @@
     "postbuild": "cp package.json ./dist && cp README.md ./dist && cp LICENSE ./dist",
     "lint": "eslint . --ext .js,.ts",
     "test": "jest --clearCache && jest",
-    "pack": "npm pack ./dist"
+    "pack": "npm pack ./dist",
+    "publish": "cd dist && npm publish"
   },
   "peerDependencies": {
     "eslint": ">= 7"
